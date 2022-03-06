@@ -48,6 +48,7 @@ def check_result(board):
 def play_game():
     print_board(BOARD)
     board = BOARD.copy()
+    rounds = 1
     while True:
         move = make_move()
         board[move] = X if not rounds % 2 else O
@@ -56,6 +57,7 @@ def play_game():
         print(outcome)
         if endgame:
             break
+        rounds += 1
 
 
 def main():
