@@ -13,12 +13,12 @@ def print_board(board):
     print(buildstr)
 
 
-def make_move():
+def make_move(board):
     def collect_input(msg):
         return int(input(msg))
 
     loc = collect_input("Enter move location:")
-    while not loc in BOARD or not BOARD[loc]:
+    while loc not in board:
         loc = collect_input("Invalid move! Enter move location:")
 
     return loc
@@ -46,18 +46,21 @@ def check_result(board):
 
 
 def play_game():
+    moves = []
     print_board(BOARD)
-    board = BOARD.copy()
     rounds = 1
     while True:
-        move = make_move()
-        board[move] = X if not rounds % 2 else O
-        print_board(board)
-        endgame, outcome = check_result(board)
+        move = make_move(BOARD)
+        while move in moves:
+            move = make_move(BOARD)
+        BOARD[move] = X if not rounds % 2 else O
+        print_board(BOARD)
+        endgame, outcome = check_result(BOARD)
         print(outcome)
         if endgame:
             break
         rounds += 1
+        moves.append(move)
 
 
 def main():
