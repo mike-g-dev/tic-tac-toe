@@ -1,11 +1,9 @@
-from board import Board
-from game import Game
+from game import game_builder
 
 
 def main():
     print("Starting game of tic-tac-toe...")
-    board = Board()
-    game = Game(board)
+    game = game_builder()
     game.play_game()
     print("Game over.")
 

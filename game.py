@@ -1,6 +1,10 @@
 from board import Board
 
 
+def game_builder():
+    return Game(Board())
+
+
 class Game:
     def __init__(self, board: Board):
         self.board = board
