@@ -19,10 +19,10 @@ class Board:
                 representation += f"\n"
         return representation
 
-    def _collect_input(self, msg):
+    def _collect_input(self, msg: str):
         return self.input_interface.read_input(msg, cast=int)
 
-    def _new_state(self, move):
+    def _new_state(self, move: int):
         self._moves.append(move)
         board_copy = self._board.copy()
         board_copy[move] = X if not len(self._moves) % 2 else O
